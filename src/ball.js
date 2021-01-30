@@ -18,13 +18,21 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.z = 5;
 
 // ball
-const geometry = new THREE.SphereGeometry(0.6, 16, 16);
-const material = new THREE.MeshBasicMaterial({
+const ballGeometry = new THREE.SphereGeometry(0.6, 16, 16);
+const ballMaterial = new THREE.MeshBasicMaterial({
   color: 0xa2a7a9,
   wireframe: true,
 });
-const ball = new THREE.Mesh(geometry, material);
+const ball = new THREE.Mesh(ballGeometry, ballMaterial);
 scene.add(ball);
+
+// floor
+var geometry = new THREE.PlaneGeometry(1000, 1000, 1, 1);
+var material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
+var floor = new THREE.Mesh(geometry, material);
+floor.material.side = THREE.DoubleSide;
+floor.rotation.x = 90;
+scene.add(floor);
 
 // controls
 var xSpeed = 0.01;
@@ -46,6 +54,7 @@ function onDocumentKeyDown(event) {
   renderer.render(scene, camera);
 }
 
+// animation loop
 function animate() {
   requestAnimationFrame(animate);
   ball.rotation.x += 0.01;
