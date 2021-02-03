@@ -15,7 +15,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.z = 5;
+camera.position.z = 15;
 
 // ball
 const ballGeometry = new THREE.SphereGeometry(0.6, 16, 16);
@@ -27,7 +27,7 @@ const ball = new THREE.Mesh(ballGeometry, ballMaterial);
 scene.add(ball);
 
 // floor
-var geometry = new THREE.PlaneGeometry(1000, 1000, 1, 1);
+var geometry = new THREE.PlaneGeometry(50, 50, 1, 1);
 var material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
 var floor = new THREE.Mesh(geometry, material);
 floor.material.side = THREE.DoubleSide;
